@@ -11,6 +11,7 @@ class Pokemon {
     private float $pointsDeVie;
     private int $puissanceAttaque;
     private float $defense;
+    private string $img;
 
     #endregion
 
@@ -80,6 +81,17 @@ class Pokemon {
         return $defense;
     }
 
+    public function getImg(): string
+    {
+        return $this->img;
+    }
+    public function setImg(string $img): string
+    {
+        $this->img = $img;
+        return $img;
+    }
+
+    
     #endregion
 
 
