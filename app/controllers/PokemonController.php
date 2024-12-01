@@ -23,7 +23,14 @@ class PokemonController{
   {
     $pokemonModel = new PokemonModel();
     $pokemon = $pokemonModel->findOneById($id);
+
+    // Prépatation du tableau à envoyer au layout
+    $data = [
+      'title' => 'Liste des pokemons',
+      'pokemon' => $pokemon
+    ];
  
-    require_once './app/views/pokemon/one.php';
+    // Rendu avec layout
+    $this->renderView('pokemon/one', $data);
   }
 }
