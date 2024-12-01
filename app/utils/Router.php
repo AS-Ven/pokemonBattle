@@ -8,22 +8,11 @@ class Router{
     // Découpe en tableau l'URL
     $url = explode('/', $url);
  
-    // Le premier élément de l'URL est le contrôleur
-    if(empty($url[0])){
-      // Redirection vers la 404
-      die('<p>404</p>');
-    }
- 
     // Défini le nom du controller
-    $controllerName = ucfirst($url[0]) . 'Controller';
+    $controllerName = ucfirst(!empty($url[0]) ? $url[0] : 'index') . 'Controller';
  
     // Le second élément de l'URL est la méthode
-    if(isset($url[1])){
-      $methodName = $url[1];
-    }
-    else{
-      $methodName = 'index';
-    }
+    $methodName = isset($url[1]) ? $url[1] : 'index';
     
     // Extrait la suite de l'URL
     $params = array_slice($url, 2);
