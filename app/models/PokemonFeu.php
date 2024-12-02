@@ -1,16 +1,24 @@
 <?php
 
-class PokemonFeu extends Pokemon {
+class PokemonFeu extends Pokemon
+{
+    protected $faiblesse = "Eau";
+
+    public function getFaiblesse(): string
+    {
+        return $this->faiblesse;
+    }
+
     public function capaciteSpeciale(string $adversaire): float
     {
-        $adversairePointDeVie = $adversaire->pointDeVie;
+        $adversairePointsDeVie = $adversaire->pointsDeVie;
         $adversaireDefense = $adversaire->defense;
         $pokemonAttaque = $this->puissanceAttaque;
 
         if ($adversaire->type == "Plante") {
-            $nouveauPointDeVie = ($adversairePointDeVie - $pokemonAttaque * $adversaireDefense) * 1.5;
+            $nouveauPointDeVie = ($adversairePointsDeVie - $pokemonAttaque * $adversaireDefense) * 1.5;
         } else {
-            $nouveauPointDeVie = $adversairePointDeVie - $pokemonAttaque * $adversaireDefense;
+            $nouveauPointDeVie = $adversairePointsDeVie - $pokemonAttaque * $adversaireDefense;
         }
         
         if ($nouveauPointDeVie < 0) {
