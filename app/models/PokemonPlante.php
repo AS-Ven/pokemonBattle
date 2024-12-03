@@ -9,7 +9,7 @@ class PokemonPlante extends Pokemon
         return $this->faiblesse;
     }
 
-    public function capaciteSpeciale(string $adversaire): float
+    public function capaciteSpeciale(object $adversaire): float
     {
         $adversairePointsDeVie = $adversaire->pointsDeVie;
         $adversaireDefense = $adversaire->defense;

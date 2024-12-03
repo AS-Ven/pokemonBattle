@@ -12,10 +12,7 @@ abstract class Pokemon {
     private float $defense;
     private string $img;
     private string $faiblesse;
-
-    #endregion
-
-
+ 
     public function __construct($row) {
         $this->id = $row['id'];
         $this->nom = $row['nom'];
@@ -26,12 +23,14 @@ abstract class Pokemon {
         $this->img = $row['img'];
         $this->faiblesse = "test";
     }
+    
+    #endregion
 
 
 
     #region Abstract
 
-    abstract public function capaciteSpeciale(string $adversaire);
+    abstract public function capaciteSpeciale(object $adversaire);
 
     #endregion
 
@@ -110,7 +109,7 @@ abstract class Pokemon {
 
     #region Méthodes
 
-    public function attaquer(string $adversaire): float
+    public function attaquer($adversaire): float
     {
         $adversairePointDeVie = $adversaire->pointDeVie;
         $adversaireDefense = $adversaire->defense;
@@ -126,7 +125,7 @@ abstract class Pokemon {
 
     public function recevoirDegats(float $degats): float
     {
-        $nouveauPointDeVie = $this->pointDeVie - $debats;
+        $nouveauPointDeVie = $this->pointsDeVie - $degats;
         if ($nouveauPointDeVie < 0) {
             $nouveauPointDeVie = 0;
         }
@@ -136,7 +135,7 @@ abstract class Pokemon {
 
     public function estKO(): bool
     {
-        if ($this->pointDeVie = 0) {
+        if ($this->pointsDeVie = 0) {
             return true;
         } else {
             return false;

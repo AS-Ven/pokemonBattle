@@ -7,7 +7,17 @@ class BattleController{
 
   public function fight(): void
   {
-    $this->renderView('battle/fight');
+    $pokemonModel = new PokemonModel();
+    $pokemons = $pokemonModel->findAll();
+ 
+    // Prépatation du tableau à envoyer au layout
+    $data = [
+      'title' => 'Phase de Combat !',
+      'pokemons' => $pokemons
+    ];
+ 
+    // Rendu avec layout
+    $this->renderView('battle/fight', $data);
   }
 
   public function select(): void

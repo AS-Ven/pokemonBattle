@@ -1,3 +1,18 @@
 <?php
 
-echo 'FIGHTING !!';
+foreach ($pokemons as $pokemon) {
+    $newHP = $pokemon->getPointDeVie() - 50;
+
+    echo '<div class="pokemon-card">';
+    echo '<h1>Pokemon: ' . $pokemon->getNom() . '</h1>';
+    echo '<h2>Type: ' . $pokemon->getType() . '</h2>';
+    echo '<img src="' . $pokemon->getImg() . '" alt="image pokemon">';
+    echo '<p>PV: ' . $newHP . ' / ' . $pokemon->getPointDeVie() . '</p>';
+    echo '<div class="stats">';
+    echo '<span>Atk: ' . $pokemon->getPuissanceAttaque() . '</span>';
+    echo '<span>Def: ' . $pokemon->getDefense() . '</span>';
+    echo '</div>';
+    echo '<p class="weakness">Faiblesse: '. $pokemon->getFaiblesse()  .'</p>';
+    echo '<p class="resistance">Résistance: '  . '</p>';
+    echo '</div>';
+}
