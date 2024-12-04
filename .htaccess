@@ -9,3 +9,4 @@
     # Redirect everything else to index.php, regardless of file existence
     RewriteRule ^(.*)$ index.php [QSA,L]
 </IfModule>
+
