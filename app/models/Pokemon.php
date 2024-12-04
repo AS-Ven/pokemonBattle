@@ -62,11 +62,11 @@ abstract class Pokemon {
         return $type;
     }
 
-    public function getPointDeVie(): float
+    public function getPointsDeVie(): float
     {
         return $this->pointsDeVie;
     }
-    public function setPointDeVie(float $pointsDeVie): float
+    public function setPointsDeVie(float $pointsDeVie): float
     {
         $this->pointsDeVie = $pointsDeVie;
         return $pointsDeVie;
@@ -111,26 +111,26 @@ abstract class Pokemon {
 
     public function attaquer($adversaire): float
     {
-        $adversairePointDeVie = $adversaire->pointDeVie;
+        $adversairePointsDeVie = $adversaire->PointsDeVie;
         $adversaireDefense = $adversaire->defense;
         $pokemonAttaque = $this->puissanceAttaque;
         
-        $nouveauPointDeVie = $adversairePointDeVie - $pokemonAttaque * $adversaireDefense;
-        if ($nouveauPointDeVie < 0) {
-            $nouveauPointDeVie = 0;
+        $nouveauPointsDeVie = $adversairePointsDeVie - $pokemonAttaque * $adversaireDefense;
+        if ($nouveauPointsDeVie < 0) {
+            $nouveauPointsDeVie = 0;
         }
         
-        return $nouveauPointDeVie;
+        return $nouveauPointsDeVie;
     }
 
     public function recevoirDegats(float $degats): float
     {
-        $nouveauPointDeVie = $this->pointsDeVie - $degats;
-        if ($nouveauPointDeVie < 0) {
-            $nouveauPointDeVie = 0;
+        $nouveauPointsDeVie = $this->pointsDeVie - $degats;
+        if ($nouveauPointsDeVie < 0) {
+            $nouveauPointsDeVie = 0;
         }
 
-        return $nouveauPointDeVie;
+        return $nouveauPointsDeVie;
     }
 
     public function estKO(): bool
