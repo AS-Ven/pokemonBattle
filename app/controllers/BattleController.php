@@ -5,8 +5,10 @@ require_once './app/utils/Render.php';
 class BattleController{
   use Render;
 
+  // Fonction d'affichage de la page battle/fight
   public function fight(): void
   {
+    // Création d'une liste de pokémons
     $pokemonModel = new PokemonModel();
     $pokemons = $pokemonModel->findAll();
  
@@ -20,8 +22,10 @@ class BattleController{
     $this->renderView('battle/fight', $data);
   }
 
+  // Fonction d'affiche de la page battle/select
   public function select(): void
   {
+    // Rendu avec layout
     $this->renderView('battle/select');
   }
 }

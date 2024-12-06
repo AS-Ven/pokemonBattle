@@ -1,5 +1,6 @@
 <?php
 
+// Connection à la BDD
 abstract class Bdd{
   protected $co = null;
  
