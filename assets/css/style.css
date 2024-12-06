@@ -1,1 +1,4 @@
 @import url(./carte.css);
+body {
+    height: 100vh;
+}

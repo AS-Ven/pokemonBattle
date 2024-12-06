@@ -1,9 +1,23 @@
 <?php
 
-class PokemonFeu extends Pokemon {
-    public function capaciteSpeciale(string $adversaire): float
+class PokemonFeu extends Pokemon
+{
+    protected $faiblesse = "Eau";
+    protected $energy = "/assets/image/feu.jpg";
+
+    public function getFaiblesse(): string
     {
-        $adversairePointDeVie = $adversaire->pointDeVie;
+        return $this->faiblesse;
+    }
+
+    public function getEnergy(): string
+    {
+        return $this->energy;
+    }
+
+    public function capaciteSpeciale(object $adversaire): float
+    {
+        $adversairePointsDeVie = $adversaire->pointsDeVie;
         $adversaireDefense = $adversaire->defense;
         $pokemonAttaque = $this->puissanceAttaque;
 
