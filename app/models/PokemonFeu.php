@@ -2,19 +2,21 @@
 
 class PokemonFeu extends Pokemon
 {
+    // Propriétés
     protected $faiblesse = "Eau";
     protected $energy = "/assets/image/feu.jpg";
 
+    // Fonction Get
     public function getFaiblesse(): string
     {
         return $this->faiblesse;
     }
-
     public function getEnergy(): string
     {
         return $this->energy;
     }
 
+    // Fonction permettant d'utiliser la capacité spécial
     public function capaciteSpeciale(object $adversaire): float
     {
         $adversairePointsDeVie = $adversaire->pointsDeVie;
@@ -22,9 +24,9 @@ class PokemonFeu extends Pokemon
         $pokemonAttaque = $this->puissanceAttaque;
 
         if ($adversaire->type == "Plante") {
-            $nouveauPointDeVie = ($adversairePointDeVie - $pokemonAttaque * $adversaireDefense) * 1.5;
+            $nouveauPointDeVie = ($adversairePointsDeVie - $pokemonAttaque * $adversaireDefense) * 1.5;
         } else {
-            $nouveauPointDeVie = $adversairePointDeVie - $pokemonAttaque * $adversaireDefense;
+            $nouveauPointDeVie = $adversairePointsDeVie - $pokemonAttaque * $adversaireDefense;
         }
         
         if ($nouveauPointDeVie < 0) {

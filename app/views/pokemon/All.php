@@ -21,7 +21,6 @@ foreach ($pokemons as $pokemon) {
     echo '<p class="resistance">Résistance ' . '</p>';
     echo '</div>';
     echo '</div>';
-
 }
 
 echo '</div>';

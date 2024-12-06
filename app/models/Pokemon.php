@@ -1,8 +1,7 @@
 <?php
 
 abstract class Pokemon {
-// class Pokemon {
-
+  
     #region Propriétés
 
     private int $id;
@@ -14,7 +13,7 @@ abstract class Pokemon {
     private string $img;
     private string $faiblesse;
     private string $energy;
-
+  
     public function __construct($row) {
         $this->id = $row['id'];
         $this->nom = $row['nom'];
@@ -24,7 +23,6 @@ abstract class Pokemon {
         $this->defense = $row['defense'];
         $this->img = $row['img'];
         $this->faiblesse = "test";
-        $this->faiblesse = "essai";
     }
     
     #endregion
@@ -33,7 +31,9 @@ abstract class Pokemon {
 
     #region Abstract
 
-    // abstract public function capaciteSepciale(string $adversaire);
+    abstract public function capaciteSpeciale(object $adversaire);
+    abstract public function getFaiblesse(): string;
+    abstract public function getEnergy(): string;
 
     #endregion
 
@@ -65,13 +65,13 @@ abstract class Pokemon {
         return $type;
     }
 
-    public function getPointDeVie(): float
+    public function getPointsDeVie(): float
     {
-        return $this->pointDeVie;
+        return $this->pointsDeVie;
     }
-    public function setPointDeVie(float $pointsDeVie): float
+    public function setPointsDeVie(float $pointsDeVie): float
     {
-        $this->pointDeVie = $pointsDeVie;
+        $this->pointsDeVie = $pointsDeVie;
         return $pointsDeVie;
     }
 
@@ -104,42 +104,46 @@ abstract class Pokemon {
         $this->img = $img;
         return $img;
     }
-
-    abstract public function getFaiblesse(): string;
-    abstract public function getEnergy(): string;
     
     #endregion
 
 
     #region Méthodes
 
-    public function attaquer(string $adversaire): float
+    // Fonction permettant d'attaquer un adversaire
+    public function attaquer($adversaire): float
     {
-        $adversairePointDeVie = $adversaire->pointDeVie;
+        // Définition des variable
+        $adversairePointsDeVie = $adversaire->PointsDeVie;
         $adversaireDefense = $adversaire->defense;
         $pokemonAttaque = $this->puissanceAttaque;
         
-        $nouveauPointDeVie = $adversairePointDeVie - $pokemonAttaque * $adversaireDefense;
-        if ($nouveauPointDeVie < 0) {
-            $nouveauPointDeVie = 0;
+        // Utilisation de l'attaque
+        $nouveauPointsDeVie = $adversairePointsDeVie - $pokemonAttaque * $adversaireDefense;
+        // Vérification du nombre de points de vie
+        if ($nouveauPointsDeVie < 0) {
+            $nouveauPointsDeVie = 0;
         }
         
-        return $nouveauPointDeVie;
+        // Renvoie les points de vie restant
+        return $nouveauPointsDeVie;
     }
 
+    // Fonction permettant de recevoir des dégats
     public function recevoirDegats(float $degats): float
     {
-        $nouveauPointDeVie = $this->pointDeVie - $debats;
-        if ($nouveauPointDeVie < 0) {
-            $nouveauPointDeVie = 0;
+        $nouveauPointsDeVie = $this->pointsDeVie - $degats;
+        if ($nouveauPointsDeVie < 0) {
+            $nouveauPointsDeVie = 0;
         }
 
-        return $nouveauPointDeVie;
+        return $nouveauPointsDeVie;
     }
 
+    // Fonction vérifiant si un pokémon est KO
     public function estKO(): bool
     {
-        if ($this->pointDeVie = 0) {
+        if ($this->pointsDeVie = 0) {
             return true;
         } else {
             return false;
