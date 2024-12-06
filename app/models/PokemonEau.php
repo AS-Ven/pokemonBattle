@@ -2,13 +2,16 @@
 
 class PokemonEau extends Pokemon
 {
+    // Propriétés
     protected $faiblesse = "Plante";
 
+    // Fonction Get
     public function getFaiblesse(): string
     {
         return $this->faiblesse;
     }
 
+    // Fonction permettant d'utiliser la capacité spécial
     public function capaciteSpeciale(object $adversaire): float
     {
         $adversairePointsDeVie = $adversaire->pointsDeVie;

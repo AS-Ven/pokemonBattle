@@ -4,8 +4,11 @@ require_once './app/utils/Render.php';
 
 class PokemonController{
   use Render;
+
+  // Fonction d'affichage de la page pokemon/findAll
   public function findAll(): void
   {
+    // Création d'une liste de pokémons
     $pokemonModel = new PokemonModel();
     $pokemons = $pokemonModel->findAll();
  
@@ -19,8 +22,10 @@ class PokemonController{
     $this->renderView('pokemon/all', $data);
   }
  
+  // Fonction d'affichage de la page pokemon/findOneById
   public function findOneById(int $id): void
   {
+    // Création d'un pokémon en fonction de son id
     $pokemonModel = new PokemonModel();
     $pokemon = $pokemonModel->findOneById($id);
 

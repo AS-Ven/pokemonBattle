@@ -39,6 +39,7 @@ class Combat {
 
     #region Methodes
 
+    // Fonction permettant de démarrer un combat
     public function demarrerCombat()
     {
         while(!$this->determinerVainqueur())
@@ -49,11 +50,13 @@ class Combat {
         return $this->determinerVainqueur();
     }
 
+    // Fonction gérant le déroullement du combat
     public function tourDeCombat($attaquant, $defenseur)
     {
         
     }
 
+    // Fonction déterminant le vainqueur d'un combat
     public function determinerVainqueur()
     {
         if($this->pokemon1->pointsDeVie <= 0)

@@ -11,7 +11,6 @@ abstract class Pokemon {
     private int $puissanceAttaque;
     private float $defense;
     private string $img;
-    private string $faiblesse;
  
     public function __construct($row) {
         $this->id = $row['id'];
@@ -21,7 +20,6 @@ abstract class Pokemon {
         $this->puissanceAttaque = $row['puissanceAttaque'];
         $this->defense = $row['defense'];
         $this->img = $row['img'];
-        $this->faiblesse = "test";
     }
     
     #endregion
@@ -109,20 +107,26 @@ abstract class Pokemon {
 
     #region Méthodes
 
+    // Fonction permettant d'attaquer un adversaire
     public function attaquer($adversaire): float
     {
+        // Définition des variable
         $adversairePointsDeVie = $adversaire->PointsDeVie;
         $adversaireDefense = $adversaire->defense;
         $pokemonAttaque = $this->puissanceAttaque;
         
+        // Utilisation de l'attaque
         $nouveauPointsDeVie = $adversairePointsDeVie - $pokemonAttaque * $adversaireDefense;
+        // Vérification du nombre de points de vie
         if ($nouveauPointsDeVie < 0) {
             $nouveauPointsDeVie = 0;
         }
         
+        // Renvoie les points de vie restant
         return $nouveauPointsDeVie;
     }
 
+    // Fonction permettant de recevoir des dégats
     public function recevoirDegats(float $degats): float
     {
         $nouveauPointsDeVie = $this->pointsDeVie - $degats;
@@ -133,6 +137,7 @@ abstract class Pokemon {
         return $nouveauPointsDeVie;
     }
 
+    // Fonction vérifiant si un pokémon est KO
     public function estKO(): bool
     {
         if ($this->pointsDeVie = 0) {
