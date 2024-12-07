@@ -119,7 +119,7 @@ abstract class Pokemon {
         $pokemonAttaque = $this->puissanceAttaque;
         
         // Utilisation de l'attaque
-        $nouveauPointsDeVie = $adversairePointsDeVie - $pokemonAttaque * $adversaireDefense;
+        $nouveauPointsDeVie = $adversairePointsDeVie - ($pokemonAttaque - ($pokemonAttaque * $adversaireDefense));
         // Vérification du nombre de points de vie
         if ($nouveauPointsDeVie < 0) {
             $nouveauPointsDeVie = 0;

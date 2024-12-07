@@ -10,12 +10,15 @@ class BattleController{
   {
     // Création d'une liste de pokémons
     $pokemonModel = new PokemonModel();
-    $pokemons = $pokemonModel->findAll();
+    $poke1 = $pokemonModel->findOneById(1);
+    $poke2 = $pokemonModel->findOneById(2);
+    
  
     // Prépatation du tableau à envoyer au layout
     $data = [
-      'title' => 'Phase de Combat !',
-      'pokemons' => $pokemons
+      'title' => 'Liste des pokemons',
+      'poke1' => $poke1,
+      'poke2' => $poke2
     ];
  
     // Rendu avec layout

@@ -45,9 +45,9 @@ class Combat {
     #region Methodes
 
     // Fonction permettant de démarrer un combat
-    public function demarrerCombat()
+    public function demarrerCombat($poke1, $poke2)
     {
-        // A faire
+      // A faire
     }
 
     // Fonction gérant le déroullement du combat
