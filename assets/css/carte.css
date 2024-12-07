@@ -1,121 +1,125 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #f4f4f9;
+    background-image: url(/assets/image/fond_poke.gif);
     margin: 0;
-    padding: 20px;
+    padding: 0;
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
     justify-content: center;
     gap: 20px;
 }
 
-.pokemon-cards {
+main {
     display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.swiper-wrapper {
+    max-width: 100vw;
+    height: 600px;
+    max-height: 100vh;
+}
+.swiper-slide {
+    width: 100%;
+    display: flex;
+    align-items: center;
 }
 
 .pokemon-card {
     position: relative;
-    width: 300px;
-    height: 400px;
+    background: linear-gradient(145deg, #ffa4a446, #ffffff20);
     border-radius: 15px;
-    overflow: hidden;
-    background: linear-gradient(135deg, #e0e0e0, #ffffff);
-    border: 2px solid #9e9e9e;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    padding: 20px;
+    border: #ffea73 solid 10px;
+    box-shadow: 5px 5px 10px #bebebe, -5px -5px 10px #ffffff;
+    width: 400px;
+    height: 450px;
+    padding: 10px;
     text-align: center;
-    transition: transform 0.4s, box-shadow 0.4s;
+    transition: all 0.15s ease-out;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+}
+.tes {
+    border-radius: 5px;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.2;
+    z-index: 1;
+    pointer-events: none;
 }
 
 .pokemon-card:hover {
-    transform: translateY(-10px) scale(1.03);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-    background: linear-gradient(135deg, #d9f0ff, #ffffff);
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.3);
+    filter: brightness(1.1);
 }
 
-/* Holographic Effect */
-.pokemon-card::before {
-    content: "";
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: linear-gradient(
-        60deg,
-        rgba(255, 255, 255, 0.4),
-        transparent,
-        rgba(255, 255, 255, 0.4)
-    );
-    transform: rotate(0deg);
-    animation: holograph-move 4s linear infinite;
-    mix-blend-mode: overlay;
+.pokemon-card.feu {
+    background: linear-gradient(145deg, #ff6161, #ff9d3b);
+}
+.pokemon-card.eau {
+    background: linear-gradient(145deg, #5a9bf6, #90d6f4);
+}
+.pokemon-card.plante {
+    background: linear-gradient(145deg, #5cd26f, #a2f8a6);
 }
 
-@keyframes holograph-move {
-    0% {
-        transform: rotate(0deg);
-    }
-    100% {
-        transform: rotate(360deg);
-    }
-}
-
-.pokemon-card img {
+.Top {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    height: 5%;
     width: 100%;
-    height: auto;
+}
+
+.pokemon-card h1 {
+    font-size: 1.5em;
+    color: #ffffff;
+}
+
+.img_type {
+    height: 40px;
+}
+
+.img_poke {
+    border: 3px solid #bebebe;
+    width: 100%;
+    margin: 10px 0;
     border-radius: 10px;
-    z-index: 2;
-    position: relative;
-    transition: transform 0.4s, filter 0.4s;
 }
 
-.pokemon-card:hover img {
-    transform: scale(1.05);
-    filter: brightness(1.2);
+.pokemon-card p {
+    font-size: 1em;
+    height: auto;
+    width: 100%;
+    color: #000000;
+    margin: 5px 0;
+    background-color: #ddd;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
-/* Stats Bar */
-.stats {
+.pokemon-card .stats {
     display: flex;
     justify-content: space-between;
-    margin-top: 15px;
-    padding: 10px;
-    background: #d9d9d9;
-    border-radius: 8px;
-    font-weight: bold;
+    padding: 10px 0;
+    font-size: 0.9em;
+    color: #555;
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    margin: 10px 0;
 }
 
-.stats span {
-    flex: 1;
-    height: 8px;
-    margin: 0 5px;
-    background-color: #ddd;
-    border-radius: 4px;
-    position: relative;
-    overflow: hidden;
-}
-
-.stats span::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: calc(var(--stat-value, 50%) * 1%);
-    background-color: #4caf50;
-    transition: width 0.4s;
-}
-
-/* Weakness and Resistance */
-.weakness {
-    margin-top: 10px;
-    color: #d9534f;
-    font-weight: bold;
-}
-
-.resistance {
-    margin-top: 10px;
-    color: #5cb85c;
-    font-weight: bold;
+.pokemon-card .weakness,
+.pokemon-card .resistance {
+    font-size: 0.9em;
+    color: #888;
 }
