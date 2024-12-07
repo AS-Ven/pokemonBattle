@@ -9,6 +9,10 @@ body {
     gap: 20px;
 }
 
+.pokemon-cards {
+    display: flex;
+}
+
 .pokemon-card {
     position: relative;
     width: 300px;
