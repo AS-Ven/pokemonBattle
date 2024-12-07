@@ -1,7 +1,10 @@
 <?php
 
-class PokemonFeu extends Pokemon
-{
+require_once './app/models/traits/soins.php';
+
+class PokemonFeu extends Pokemon{
+    use Soins;
+
     // Propriétés
     protected $faiblesse = "Eau";
 
@@ -16,7 +19,7 @@ class PokemonFeu extends Pokemon
     {
         $adversairePointsDeVie = $adversaire->pointsDeVie;
         $adversaireDefense = $adversaire->defense;
-        $pokemonAttaque = $this->puissanceAttaque;
+        $pokemonAttaque = $this->getPuissanceAttaque();
 
         if ($adversaire->type == "Plante") {
             $nouveauPointDeVie = ($adversairePointsDeVie - $pokemonAttaque * $adversaireDefense) * 1.5;

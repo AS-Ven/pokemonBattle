@@ -1,7 +1,10 @@
 <?php
 
-class PokemonEau extends Pokemon
-{
+require_once './app/models/traits/soins.php';
+
+class PokemonEau extends Pokemon{
+    use Soins;
+
     // Propriétés
     protected $faiblesse = "Plante";
 
@@ -12,22 +15,9 @@ class PokemonEau extends Pokemon
     }
 
     // Fonction permettant d'utiliser la capacité spécial
-    public function capaciteSpeciale(object $adversaire): float
+    public function capaciteSpeciale($adversaire)
     {
-        $adversairePointsDeVie = $adversaire->pointsDeVie;
-        $adversaireDefense = $adversaire->defense;
-        $pokemonAttaque = $this->puissanceAttaque;
-
-        if ($adversaire->type == "Plante") {
-            $nouveauPointDeVie = ($adversairePointsDeVie - $pokemonAttaque * $adversaireDefense) * 1.5;
-        } else {
-            $nouveauPointDeVie = $adversairePointsDeVie - $pokemonAttaque * $adversaireDefense;
-        }
-        
-        if ($nouveauPointDeVie < 0) {
-            $nouveauPointDeVie = 0;
-        }
-        
-        return $nouveauPointDeVie;
+        $_SESSION[$adversaire . 'newHP'] = $_SESSION[$adversaire . 'newHP'] - ($this->getPuissanceAttaque() * 2);
+        file_put_contents("php://stderr", print_r($adversaire->getId(), TRUE));
     }
 }

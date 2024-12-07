@@ -40,14 +40,9 @@ class Combat {
     #region Methodes
 
     // Fonction permettant de démarrer un combat
-    public function demarrerCombat()
+    public function demarrerCombat($poke1, $poke2)
     {
-        while(!$this->determinerVainqueur())
-        {
-            $this->tourDeCombat($this->pokemon1, $this->pokemon2);
-        }
-
-        return $this->determinerVainqueur();
+      // A faire
     }
 
     // Fonction gérant le déroullement du combat
