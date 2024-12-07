@@ -7,11 +7,16 @@ class PokemonFeu extends Pokemon{
 
     // Propriétés
     protected $faiblesse = "Eau";
+    protected $energy = "/assets/image/feu.jpg";
 
     // Fonction Get
     public function getFaiblesse(): string
     {
         return $this->faiblesse;
+    }
+    public function getEnergy(): string
+    {
+        return $this->energy;
     }
 
     // Fonction permettant d'utiliser la capacité spécial

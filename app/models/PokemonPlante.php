@@ -7,11 +7,16 @@ class PokemonPlante extends Pokemon{
 
     // Propriétés
     protected $faiblesse = "Feu";
+    protected $energy = "/assets/image/plante.jpg";
 
     // Fonction Get
     public function getFaiblesse(): string
     {
         return $this->faiblesse;
+    }
+    public function getEnergy(): string
+    {
+        return $this->energy;
     }
 
     // Fonction permettant d'utiliser la capacité spécial

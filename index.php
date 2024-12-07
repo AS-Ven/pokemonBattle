@@ -1,7 +1,6 @@
 <?php
 
 session_start();
-$_SESSION['test'] = "test";
 
 // Chargement de l'autoload de vendor
 require './vendor/autoload.php';

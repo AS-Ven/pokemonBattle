@@ -1,7 +1,7 @@
 <?php
 
 abstract class Pokemon {
-
+  
     #region Propriétés
 
     private int $id;
@@ -11,7 +11,9 @@ abstract class Pokemon {
     private int $puissanceAttaque;
     private float $defense;
     private string $img;
- 
+    private string $faiblesse;
+    private string $energy;
+  
     public function __construct($row) {
         $this->id = $row['id'];
         $this->nom = $row['nom'];
@@ -20,6 +22,7 @@ abstract class Pokemon {
         $this->puissanceAttaque = $row['puissanceAttaque'];
         $this->defense = $row['defense'];
         $this->img = $row['img'];
+        $this->faiblesse = "test";
     }
     
     #endregion
@@ -29,6 +32,8 @@ abstract class Pokemon {
     #region Abstract
 
     abstract public function capaciteSpeciale(object $adversaire);
+    abstract public function getFaiblesse(): string;
+    abstract public function getEnergy(): string;
 
     #endregion
 
@@ -99,8 +104,6 @@ abstract class Pokemon {
         $this->img = $img;
         return $img;
     }
-
-    abstract public function getFaiblesse(): string;
     
     #endregion
 
