@@ -2,6 +2,7 @@
 echo '<div class="swiper">';
 echo '<div class="swiper-wrapper">';
 foreach ($pokemons as $pokemon) {
+
     echo "<div class='swiper-slide'>";
     $typeClass = strtolower($pokemon->getType());
     echo '<div class="pokemon-card ' . $typeClass . '">';

@@ -4,8 +4,13 @@ class Combat {
 
     #region Propriétés
 
-    private object $pokemon1;
-    private object $pokemon2;
+    private Pokemon $pokemon1;
+    private Pokemon $pokemon2;
+
+    public function __construct(Pokemon $pokemon1, Pokemon $pokemon2) {
+        $this->pokemon1 = $pokemon1;
+        $this->pokemon2 = $pokemon2;
+    }
 
     #endregion
 
@@ -42,34 +47,29 @@ class Combat {
     // Fonction permettant de démarrer un combat
     public function demarrerCombat()
     {
-        while(!$this->determinerVainqueur())
-        {
-            $this->tourDeCombat($this->pokemon1, $this->pokemon2);
-        }
-
-        return $this->determinerVainqueur();
+        // A faire
     }
 
     // Fonction gérant le déroullement du combat
-    public function tourDeCombat($attaquant, $defenseur)
+    public function tourDeCombat(Pokemon $attaquant, Pokemon $defenseur)
     {
-        
+        $attaquant->attaquer($defenseur);
     }
 
     // Fonction déterminant le vainqueur d'un combat
     public function determinerVainqueur()
     {
-        if($this->pokemon1->pointsDeVie <= 0)
+        if($this->pokemon1->getPointsDeVie() <= 0)
         {
             return $this->pokemon2;
         }
 
-        if ($this->pokemon2->pointsDeVie <= 0)
+        if ($this->pokemon2->getPointsDeVie() <= 0)
         {
             return $this->pokemon1;
         }
 
-        return;
+        return null;
     }
 
     #endregion
