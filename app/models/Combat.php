@@ -9,6 +9,7 @@ class Combat {
     private Pokemon $model1;
     private Pokemon $model2;
     private bool $status;
+    private string $action;
 
     public function __construct(Pokemon $pokemon1, Pokemon $pokemon2, bool $status) {
         $this->pokemon1 = $pokemon1;
@@ -16,6 +17,7 @@ class Combat {
         $this->model1 = clone $pokemon1;
         $this->model2 = clone $pokemon2;
         $this->status = $status;
+        $this->action = "Que le combat commence !";
     }
 
     #endregion
@@ -24,7 +26,7 @@ class Combat {
 
     #region Set - Get
 
-    public function getPokemon1(): object
+    public function getPokemon1(): Pokemon
     {
         return $this->pokemon1;
     }
@@ -34,7 +36,7 @@ class Combat {
         return $pokemon1;
     }
 
-    public function getPokemon2(): object
+    public function getPokemon2(): Pokemon
     {
         return $this->pokemon2;
     }
@@ -52,6 +54,16 @@ class Combat {
     {
         $this->status = $status;
         return $status;
+    }
+
+    public function getAction(): string
+    {
+        return $this->action;
+    }
+    public function setAction(string $action): string
+    {
+        $this->action = $action;
+        return $action;
     }
 
     #endregion
@@ -100,14 +112,14 @@ class Combat {
             $malus = rand(1, 3);
             switch($malus){
                 case 1:
-                    // S'attaque soit-même
+                    $this->setAction($attaquant->getNom() . " s'est attaqué lui-même !");
                     $attaquant->attaquer($attaquant);
                     break;
                 case 2:
-                    // Rien ne se passe
+                    $this->setAction($attaquant->getNom() . " a raté son attaque !");
                     break;
                 case 3:
-                    // Rien ne se passe
+                    $this->setAction($attaquant->getNom() . " a raté son attaque !");
                     break;
             }
         }
@@ -116,20 +128,21 @@ class Combat {
             $bonus = rand(1, 3);
             switch($bonus){
                 case 1:
-                    // Attaque 2 fois
+                    $this->setAction($attaquant->getNom() . " a attaqué 2 fois !");
                     $attaquant->attaquer($defenseur);
                     break;
                 case 2:
-                    // Se soigne de 25 points de vie
+                    $this->setAction($attaquant->getNom() . " s'est soigné de 25 PV !");
                     $this->utiliserSoin($attaquant, $attaquant->getPointsDeVie() + 25);
                     break;
                 case 3:
-                    // Se soigne de 25 points de vie
+                    $this->setAction($attaquant->getNom() . " s'est soigné de 25 PV !");
                     $this->utiliserSoin($attaquant, $attaquant->getPointsDeVie() + 25);
                     break;
             }
             $attaquant->attaquer($defenseur);
         } else {
+            $this->setAction($attaquant->getNom() . " a utilisé " .  $attaquant->getNomAtk());
             $attaquant->attaquer($defenseur);
         }
 
@@ -139,6 +152,7 @@ class Combat {
     // Fonction appelant la fonction d'attaque spé
     public function utiliserAttaqueSpe(Pokemon $attaquant, Pokemon $defenseur)
     {
+        $this->setAction($attaquant->getNom() . " a utilisé " . $attaquant->getNomAtkSpe() . " !");
         $attaquant->capaciteSpeciale($defenseur);
         $this->sauvegarderCombat();
     }

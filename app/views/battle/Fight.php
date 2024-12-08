@@ -2,8 +2,21 @@
 
 echo '<div class="g-vic" >';
 echo '<div class="vic" >';
+echo $combat->getAction();
+echo '</div>';
+echo '</div>';
+
+echo '<div class="g-vic" >';
+echo '<div class="vic" >';
 if (!$combat->determinerVainqueur()){
-    echo 'Au combat !';
+    if(!$combat->getStatus())
+    {
+        echo 'Au tour de : ' . $poke1->getNom();
+    }
+    else
+    {
+        echo 'Au tour de : ' . $poke2->getNom();
+    }
 } else {
     echo $combat->determinerVainqueur()->getNom() . ' a gagné !';
 }
@@ -26,7 +39,7 @@ echo '</div>';
         <p class="HP" >HP : <?= $poke1->getPointsDeVie() ?> / <?= $modelPoke1->getPointsDeVie() ?></p>
     </div>
     <div class="bar" >
-        <p class="DEF" >DEF : <?= $poke1->getDefense() ?></p>
+        <p class="DEF" >DEF : <?= $poke1->getDefense() * 100 ?></p>
     </div>
 
     <div class="G_atk">
@@ -37,7 +50,7 @@ echo '</div>';
             </div>
             <div class="l_atk">
                 <input class="nom_atk" type="submit" name="poke1atkspe" value="<?= $poke1->getNomAtkSpe() ?>"/>
-                <p class="g_atk" ><?= $poke1->getPuissanceAttaque() ?></p>
+                <p class="g_atk" ><?= $poke1->getPuissanceAttaque() * ($poke1->getCharge() * 0.5) ?></p>
             </div>
         </form>
     </div>
@@ -63,7 +76,7 @@ echo '</div>';
         <p class="HP" >HP : <?= $poke2->getPointsDeVie() ?> / <?= $modelPoke2->getPointsDeVie() ?></p>
     </div>
     <div class="bar" >
-        <p class="DEF" >DEF : <?= $poke2->getDefense() ?></p>
+        <p class="DEF" >DEF : <?= $poke2->getDefense() * 100 ?></p>
     </div>
 
     <div class="G_atk">
@@ -74,7 +87,7 @@ echo '</div>';
             </div>
             <div class="l_atk">
                 <input class="nom_atk" type="submit" name="poke2atkspe" value="<?= $poke2->getNomAtkSpe() ?>"/>
-                <p class="g_atk" ><?= $poke2->getPuissanceAttaque() ?></p>
+                <p class="g_atk" ><?= $poke2->getPuissanceAttaque() * ($poke2->getCharge() * 0.5) ?></p>
             </div>
         </form>
     </div>
