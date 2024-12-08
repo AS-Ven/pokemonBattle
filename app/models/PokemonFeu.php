@@ -4,7 +4,7 @@ class PokemonFeu extends Pokemon
 {
     // Propriétés
     protected $faiblesse = "Eau";
-    protected $energy = "/assets/image/feu.jpg";
+    protected $energy = "/assets/image/feu.png";
 
     // Fonction Get
     public function getFaiblesse(): string
