@@ -1,12 +1,17 @@
 <?php
 
+echo '<div class="g-vic" >';
+echo '<div class="vic" >';
 if (!$combat->determinerVainqueur()){
     echo 'Au combat !';
 } else {
     echo $combat->determinerVainqueur()->getNom() . ' a gagné !';
 }
+echo '</div>';
+echo '</div>';
 
 ?>
+<div class="all">
 
 <div class="pokemon-card <?= strtolower($poke1->getType()) ?>">
     <img class="effet_grain" src="/assets/image/teste.avif" alt="">
@@ -43,7 +48,7 @@ if (!$combat->determinerVainqueur()){
 
 </div>
 
-
+<img class="vs" src="/assets/image/Combat-Versus.png" alt="">
 
 <div class="pokemon-card <?= strtolower($poke2->getType()) ?>">
     <img class="effet_grain" src="/assets/image/teste.avif" alt="">
@@ -77,5 +82,7 @@ if (!$combat->determinerVainqueur()){
     <div>
         <p class="weakness">Faiblesse : <?= $poke2->getFaiblesse() ?></p>
     </div>
+
+</div>
 
 </div>

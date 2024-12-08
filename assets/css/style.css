@@ -19,6 +19,7 @@ body {
     padding: 0;
     display: flex;
     flex-direction: column;
+    min-height: 100vh;
 }
 
 header {
@@ -183,4 +184,41 @@ fieldset {
 }
 .rad2 {
     margin-bottom: 40px;
+}
+
+.all {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.vs {
+    height: 300px;
+    margin: 150px;
+}
+
+.vic {
+    /*Forme*/
+    padding: 12px;
+    border-radius: 25px;
+    width: 90%;
+    /*Apparence*/
+    font-size: 1.5em;
+    border: 5px solid #4b6fbb;
+    background-color: #fedd5b;
+    text-decoration: none;
+    color: #4b6fbb;
+    font-weight: 600;
+
+    /*Emplacement*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.g-vic {
+    display: flex;
+    justify-content: center;
+    margin: 20px;
 }
