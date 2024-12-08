@@ -23,31 +23,40 @@ echo '<div class="swiper">';
 echo '<div class="swiper-wrapper">';
 
 foreach ($pokemons as $pokemon) {
-
     echo "<div class='swiper-slide'>";
-    $typeClass = strtolower($pokemon->getType());
-    echo '<div class="pokemon-card ' . $typeClass . '">';
+        $typeClass = strtolower($pokemon->getType());
+        echo '<div class="pokemon-card ' . $typeClass . '">';
+            echo '<img class="effet_grain" src="/assets/image/teste.avif" alt="">';
 
-    echo '<img class="effet_grain" src="/assets/image/teste.avif" alt="">'; // Image superposée
+            echo '<div class="Top">';
+                echo '<h1 class="nom_poke">' . $pokemon->getNom() . '</h1>';
+                echo '<img class="img_type" src="' . $pokemon->getEnergy() . '" alt="energy pokemon">';
+            echo '</div>';
+            echo '<img class="img_poke" src="' . $pokemon->getImg() . '" alt="image pokemon">';
 
-    echo '<div class="Top">';
-    echo '<h1 class="nom_poke">' . $pokemon->getNom() . '</h1>';
-    // echo '<h2>' . $pokemon->getType() . '</h2>';
-    echo '<img class="img_type" src="' . $pokemon->getEnergy() . '" alt="energy pokemon">';
-    echo '</div>';
-    echo '<img class="img_poke" src="' . $pokemon->getImg() . '" alt="image pokemon">';
+            echo '<div class="bar" >';
+                echo '<p class="HP" >HP : ' . $pokemon->getPointsDeVie() . '</p>';
+            echo '</div>';
+            echo '<div class="bar" >';
+                echo '<p class="DEF" >DEF : ' . $pokemon->getDefense() . '</p>';
+            echo '</div>';
 
-    echo '<div class="HP" >';
-    echo '<p class="HP_bar" >HP : ' . $pokemon->getPointsDeVie() . '</p>';
-    echo '</div>';
+            echo '<div class="G_atk">';
+                echo '<div class="l_atk">';
+                    echo '<p class="nom_atk" >' . $pokemon->getNomAtk() . '</p>';
+                    echo '<p class="g_atk" >' . $pokemon->getPuissanceAttaque() . '</p>';
+                echo '</div>';
+                echo '<div class="l_atk">';
+                    echo '<p class="nom_atk" >' . $pokemon->getNomAtkSpe() . '</p>';
+                    echo '<p class="g_atk" >' . $pokemon->getPuissanceAttaque() . '</p>';
+                echo '</div>';
+            echo '</div>';
 
-    echo '<div class="stats">';
-    echo '<span>Atk: ' . $pokemon->getPuissanceAttaque() . '</span>';
-    echo '<span>Def: ' . $pokemon->getDefense() . '</span>';
-    echo '</div>';
-    echo '<p class="weakness">Faiblesse: ' . $pokemon->getFaiblesse() . '</p>';
-    echo '<p class="resistance">Résistance ' . '</p>';
-    echo '</div>';
+            echo '<div>';
+                echo '<p class="weakness">Faiblesse : ' . $pokemon->getFaiblesse() . '</p>';
+            echo '</div>';
+
+        echo '</div>';
     echo '</div>';
 }
 
@@ -59,7 +68,7 @@ echo '<div class="swiper-button-prev"></div><div class="swiper-button-next"></di
 
 
 echo '<div class="combat">';
-echo '<a class="bt_combat" href="/app/views/battle/Fight.php"> DEMARRER UN COMBAT'.'</a>';
+echo '<a class="bt_combat" href="/battle/select"> DEMARRER UN COMBAT'.'</a>';
 echo '</div>';
 
 ?>

@@ -40,7 +40,7 @@ class PokemonFeu extends Pokemon{
 
         // Vérification du type et gestion de dégats
         if ($adversaire->getType() == "Eau") {
-            $degats = - $pokemonAttaque * 1.5;
+            $degats = $pokemonAttaque * 1.5;
         } else {
             $degats = $pokemonAttaque;
         }
