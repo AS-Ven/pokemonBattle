@@ -19,7 +19,7 @@ foreach ($pokemons as $pokemon) {
             echo '</div>';
             echo '<img class="img_poke" src="' . $pokemon->getImg() . '" alt="image pokemon">';
 
-            echo '<div class="bar" >';
+            echo '<div class="bar bar-hp" >';
                 echo '<p class="HP" >HP : ' . $pokemon->getPointsDeVie() . '</p>';
             echo '</div>';
             echo '<div class="bar" >';
@@ -76,11 +76,11 @@ foreach ($pokemons as $pokemon) {
             echo '</div>';
             echo '<img class="img_poke" src="' . $pokemon->getImg() . '" alt="image pokemon">';
 
-            echo '<div class="bar" >';
+            echo '<div class="bar bar-hp" >';
                 echo '<p class="HP" >HP : ' . $pokemon->getPointsDeVie() . '</p>';
             echo '</div>';
             echo '<div class="bar" >';
-                echo '<p class="DEF" >DEF : ' . $pokemon->getDefense() . '</p>';
+                echo '<p class="DEF" >DEF : ' . $pokemon->getDefense() * 100 . '</p>';
             echo '</div>';
 
             echo '<div class="G_atk">';
@@ -90,7 +90,7 @@ foreach ($pokemons as $pokemon) {
                 echo '</div>';
                 echo '<div class="l_atk">';
                     echo '<p class="nom_atk" >' . $pokemon->getNomAtkSpe() . '</p>';
-                    echo '<p class="g_atk" >' . $pokemon->getPuissanceAttaque() . '</p>';
+                    echo '<p class="g_atk" >' . $pokemon->getPuissanceAttaque() * $pokemon->getCharge() . '</p>';
                 echo '</div>';
             echo '</div>';
 

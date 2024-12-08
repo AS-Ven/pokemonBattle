@@ -34,7 +34,7 @@ foreach ($pokemons as $pokemon) {
             echo '</div>';
             echo '<img class="img_poke" src="' . $pokemon->getImg() . '" alt="image pokemon">';
 
-            echo '<div class="bar" >';
+            echo '<div class="bar bar-hp" >';
                 echo '<p class="HP" >HP : ' . $pokemon->getPointsDeVie() . '</p>';
             echo '</div>';
             echo '<div class="bar" >';

@@ -6,50 +6,76 @@ if (!$combat->determinerVainqueur()){
     echo $combat->determinerVainqueur()->getNom() . ' a gagné !';
 }
 
-#region Poke1
+?>
 
-echo '<div class="pokemon-card">';
-echo '<h1>Pokemon: ' . $poke1->getNom() . '</h1>';
-echo '<h2>Type: ' . $poke1->getType() . '</h2>';
-echo '<p>PV: ' . $poke1->getPointsDeVie() . ' / ' . $modelPoke1->getPointsDeVie() . '</p>';
-echo '<div class="stats">';
-echo '<span>Atk: ' . $poke1->getPuissanceAttaque() . '</span>';
-echo '<span>Def: ' . $poke1->getDefense() . '</span>';
-echo '</div>';
-echo '<p class="weakness">Faiblesse: '. $poke1->getFaiblesse()  .'</p>';
-echo '<p class="resistance">Résistance: '  . '</p>';
+<div class="pokemon-card <?= strtolower($poke1->getType()) ?>">
+    <img class="effet_grain" src="/assets/image/teste.avif" alt="">
 
-echo '<form method="post">';
+    <div class="Top">
+        <h1 class="nom_poke"><?= $poke1->getNom() ?></h1>
+        <img class="img_type" src="<?= $poke1->getEnergy() ?>" alt="energy pokemon">
+    </div>
+    <img class="img_poke" src="<?= $poke1->getImg() ?>" alt="image pokemon">
 
-echo '<input type="submit" name="poke1atk" value="Attaque"/>';
-echo '<input type="submit" name="poke1atkspe" value="Attaque Spé"/>';
-echo '</form>';
+    <div class="bar bar-hp" style="--bar: <?= $poke1->getPointsDeVie() / $modelPoke1->getPointsDeVie() * 100 ?>%" >
+        <p class="HP" >HP : <?= $poke1->getPointsDeVie() ?> / <?= $modelPoke1->getPointsDeVie() ?></p>
+    </div>
+    <div class="bar" >
+        <p class="DEF" >DEF : <?= $poke1->getDefense() ?></p>
+    </div>
 
-echo '</div>';
+    <div class="G_atk">
+        <form method="post">
+            <div class="l_atk">
+                <input class="nom_atk" type="submit" name="poke1atk" value="<?= $poke1->getNomAtk() ?>"/>
+                <p class="g_atk" ><?= $poke1->getPuissanceAttaque() ?></p>
+            </div>
+            <div class="l_atk">
+                <input class="nom_atk" type="submit" name="poke1atkspe" value="<?= $poke1->getNomAtkSpe() ?>"/>
+                <p class="g_atk" ><?= $poke1->getPuissanceAttaque() ?></p>
+            </div>
+        </form>
+    </div>
 
-#endregion
+    <div>
+        <p class="weakness">Faiblesse : <?= $poke1->getFaiblesse() ?></p>
+    </div>
+
+</div>
 
 
 
-#region Poke2
+<div class="pokemon-card <?= strtolower($poke2->getType()) ?>">
+    <img class="effet_grain" src="/assets/image/teste.avif" alt="">
 
-echo '<div class="pokemon-card">';
-echo '<h1>Pokemon: ' . $poke2->getNom() . '</h1>';
-echo '<h2>Type: ' . $poke2->getType() . '</h2>';
-echo '<p>PV: ' . $poke2->getPointsDeVie() . ' / ' . $modelPoke2->getPointsDeVie() . '</p>';
-echo '<div class="stats">';
-echo '<span>Atk: ' . $poke2->getPuissanceAttaque() . '</span>';
-echo '<span>Def: ' . $poke2->getDefense() . '</span>';
-echo '</div>';
-echo '<p class="weakness">Faiblesse: '. $poke2->getFaiblesse()  .'</p>';
-echo '<p class="resistance">Résistance: '  . '</p>';
+    <div class="Top">
+        <h1 class="nom_poke"><?= $poke2->getNom() ?></h1>
+        <img class="img_type" src="<?= $poke2->getEnergy() ?>" alt="energy pokemon">
+    </div>
+    <img class="img_poke" src="<?= $poke2->getImg() ?>" alt="image pokemon">
 
-echo '<form method="post">';
+    <div class="bar bar-hp" style="--bar: <?= $poke2->getPointsDeVie() / $modelPoke2->getPointsDeVie() * 100 ?>%" >
+        <p class="HP" >HP : <?= $poke2->getPointsDeVie() ?> / <?= $modelPoke2->getPointsDeVie() ?></p>
+    </div>
+    <div class="bar" >
+        <p class="DEF" >DEF : <?= $poke2->getDefense() ?></p>
+    </div>
 
-echo '<input type="submit" name="poke2atk" value="Attaque"/>';
-echo '<input type="submit" name="poke2atkspe" value="Attaque Spé"/>';
-echo '</form>';
+    <div class="G_atk">
+        <form method="post">
+            <div class="l_atk">
+                <input class="nom_atk" type="submit" name="poke2atk" value="<?= $poke2->getNomAtk() ?>"/>
+                <p class="g_atk" ><?= $poke2->getPuissanceAttaque() ?></p>
+            </div>
+            <div class="l_atk">
+                <input class="nom_atk" type="submit" name="poke2atkspe" value="<?= $poke2->getNomAtkSpe() ?>"/>
+                <p class="g_atk" ><?= $poke2->getPuissanceAttaque() ?></p>
+            </div>
+        </form>
+    </div>
 
-echo '</div>';
+    <div>
+        <p class="weakness">Faiblesse : <?= $poke2->getFaiblesse() ?></p>
+    </div>
 
-#endregion
+</div>
