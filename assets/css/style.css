@@ -222,3 +222,56 @@ fieldset {
     justify-content: center;
     margin: 20px;
 }
+
+.jouer {
+    /*Forme*/
+    padding: 12px;
+    border-radius: 25px;
+    width: 300px;
+    margin-bottom: 20px;
+    /*Apparence*/
+    font-size: 5em;
+    border: 10px solid #4b6fbb;
+    background-color: #fedd5b;
+    text-decoration: none;
+    color: #4b6fbb;
+    font-weight: 600;
+
+    /*Emplacement*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.deck {
+    /*Forme*/
+    padding: 12px;
+    border-radius: 25px;
+    width: 300px;
+    /*Apparence*/
+    font-size: 2em;
+    border: 10px solid #4b6fbb;
+    background-color: #fedd5b;
+    text-decoration: none;
+    color: #4b6fbb;
+    font-weight: 600;
+
+    /*Emplacement*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.g_h {
+    display: flex;
+    justify-content: center;
+}
+
+.Home {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    margin-top: 10%;
+}
