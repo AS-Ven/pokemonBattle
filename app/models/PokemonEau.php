@@ -36,15 +36,19 @@ class PokemonEau extends Pokemon{
     // Fonction permettant d'utiliser la capacité spécial
     public function capaciteSpeciale(Pokemon $adversaire)
     {
-        $pokemonAttaque = $this->getPuissanceAttaque();
+        $charge = $this->getCharge();
+        $attaque = $this->getPuissanceAttaque() * (0.5 * $charge);
 
         // Vérification du type et gestion de dégats
         if ($adversaire->getType() == "Feu") {
-            $degats = - $pokemonAttaque * 1.5;
+            $degats = $attaque * 1.5;
         } else {
-            $degats = $pokemonAttaque;
+            $degats = $attaque;
         }
-        
+
+        // Reset les charges du pokemon
+        $this->setCharge(1);
+
         $adversaire->recevoirDegats($degats);
     }
 
