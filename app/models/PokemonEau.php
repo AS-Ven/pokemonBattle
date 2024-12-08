@@ -9,7 +9,7 @@ class PokemonEau extends Pokemon{
 
     // Propriétés
     protected $faiblesse = "Plante";
-    protected $energy = "/assets/image/eau.jpg";
+    protected $energy = "/assets/image/eau.png";
 
     #endregion
 

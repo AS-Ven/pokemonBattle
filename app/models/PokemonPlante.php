@@ -9,7 +9,7 @@ class PokemonPlante extends Pokemon{
 
     // Propriétés
     protected $faiblesse = "Feu";
-    protected $energy = "/assets/image/plante.jpg";
+    protected $energy = "/assets/image/plante.png";
 
     #endregion
 
