@@ -115,24 +115,20 @@ abstract class Pokemon {
     {
         $attaque = $this->getPuissanceAttaque();
         $defense = $adversaire->getDefense();
-        $pv = $adversaire->getPointsDeVie();
-        $newPV = $pv - ($attaque - $attaque * $defense);
+        $degats = $attaque - $attaque * $defense;
+        $adversaire->recevoirDegats($degats);
+    }
+
+    // Fonction permettant de recevoir des dégats
+    public function recevoirDegats(float $degats)
+    {
+        $pv = $this->getPointsDeVie();
+        $newPV = $pv - $degats;
         if ($newPV < 0){
             $newPV = 0;
         }
 
-        $adversaire->setPointsDeVie($newPV);
-    }
-
-    // Fonction permettant de recevoir des dégats
-    public function recevoirDegats(float $degats): float
-    {
-        $nouveauPointsDeVie = $this->pointsDeVie - $degats;
-        if ($nouveauPointsDeVie < 0) {
-            $nouveauPointsDeVie = 0;
-        }
-
-        return $nouveauPointsDeVie;
+        $this->setPointsDeVie($newPV);
     }
 
     // Fonction vérifiant si un pokémon est KO
