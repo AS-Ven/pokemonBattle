@@ -20,9 +20,21 @@ class PokemonEau extends Pokemon{
     }
 
     // Fonction permettant d'utiliser la capacité spécial
-    public function capaciteSpeciale($adversaire)
+    public function capaciteSpeciale(Pokemon $adversaire)
     {
-        $_SESSION[$adversaire . 'newHP'] = $_SESSION[$adversaire . 'newHP'] - ($this->getPuissanceAttaque() * 2);
-        file_put_contents("php://stderr", print_r($adversaire->getId(), TRUE));
+        $adversairePointsDeVie = $adversaire->getPointsDeVie();
+        $pokemonAttaque = $this->getPuissanceAttaque();
+
+        if ($adversaire->getType() == "Feu") {
+            $nouveauPointDeVie = $adversairePointsDeVie - $pokemonAttaque * 1.5;
+        } else {
+            $nouveauPointDeVie = $adversairePointsDeVie - $pokemonAttaque;
+        }
+        
+        if ($nouveauPointDeVie < 0) {
+            $nouveauPointDeVie = 0;
+        }
+        
+        $adversaire->setPointsDeVie($nouveauPointDeVie);
     }
 }

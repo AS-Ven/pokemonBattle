@@ -31,7 +31,7 @@ abstract class Pokemon {
 
     #region Abstract
 
-    abstract public function capaciteSpeciale(object $adversaire);
+    abstract public function capaciteSpeciale(Pokemon $adversaire);
     abstract public function getFaiblesse(): string;
     abstract public function getEnergy(): string;
 
@@ -111,22 +111,17 @@ abstract class Pokemon {
     #region Méthodes
 
     // Fonction permettant d'attaquer un adversaire
-    public function attaquer($adversaire): float
+    public function attaquer(Pokemon $adversaire)
     {
-        // Définition des variable
-        $adversairePointsDeVie = $adversaire->PointsDeVie;
-        $adversaireDefense = $adversaire->defense;
-        $pokemonAttaque = $this->puissanceAttaque;
-        
-        // Utilisation de l'attaque
-        $nouveauPointsDeVie = $adversairePointsDeVie - ($pokemonAttaque - ($pokemonAttaque * $adversaireDefense));
-        // Vérification du nombre de points de vie
-        if ($nouveauPointsDeVie < 0) {
-            $nouveauPointsDeVie = 0;
+        $attaque = $this->getPuissanceAttaque();
+        $defense = $adversaire->getDefense();
+        $pv = $adversaire->getPointsDeVie();
+        $newPV = $pv - ($attaque - $attaque * $defense);
+        if ($newPV < 0){
+            $newPV = 0;
         }
-        
-        // Renvoie les points de vie restant
-        return $nouveauPointsDeVie;
+
+        $adversaire->setPointsDeVie($newPV);
     }
 
     // Fonction permettant de recevoir des dégats
