@@ -2,10 +2,8 @@
 
 trait Soins {
     // Fonction de soin
-    public function soigner()
+    public function soigner($heal)
     {
-        $pv = $this->getPointsDeVie();
-        $heal = 50;
-        $this->setPointsDeVie($pv + $heal);
+        $this->setPointsDeVie($heal);
     }
 }

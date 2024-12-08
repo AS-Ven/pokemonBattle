@@ -20,7 +20,6 @@ echo '<p class="weakness">Faiblesse: '. $poke1->getFaiblesse()  .'</p>';
 echo '<p class="resistance">Résistance: '  . '</p>';
 
 echo '<form method="post">';
-echo '<input type="submit" name="poke1heal" value="Soin"/>';
 
 echo '<input type="submit" name="poke1atk" value="Attaque"/>';
 echo '<input type="submit" name="poke1atkspe" value="Attaque Spé"/>';
@@ -46,7 +45,6 @@ echo '<p class="weakness">Faiblesse: '. $poke2->getFaiblesse()  .'</p>';
 echo '<p class="resistance">Résistance: '  . '</p>';
 
 echo '<form method="post">';
-echo '<input type="submit" name="poke2heal" value="Soin"/>';
 
 echo '<input type="submit" name="poke2atk" value="Attaque"/>';
 echo '<input type="submit" name="poke2atkspe" value="Attaque Spé"/>';

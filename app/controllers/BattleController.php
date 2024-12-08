@@ -24,7 +24,7 @@ class BattleController{
 
     // Attaque du combattant 1
     if(isset($_POST['poke1atk'])){
-      if($combat->getStatus() == 0){ 
+      if($combat->getStatus() == 0 && !$combat->determinerVainqueur($modelPoke1, $modelPoke2)){ 
         $combat->tourDeCombat($poke1, $poke2);
       }
         header("Location: " . $_SERVER['REQUEST_URI']);
@@ -32,25 +32,8 @@ class BattleController{
     }
     // Attaque du combattant 2
     if(isset($_POST['poke2atk'])){
-      if($combat->getStatus() == 1){ 
+      if($combat->getStatus() == 1 && !$combat->determinerVainqueur($modelPoke1, $modelPoke2)){ 
         $combat->tourDeCombat($poke2, $poke1);
-      }
-      header("Location: " . $_SERVER['REQUEST_URI']);
-      exit();
-    }
-
-    // Soin du combattant 1
-    if(isset($_POST['poke1heal'])){
-      if($combat->getStatus() == 0){ 
-        $combat->utiliserSoin($poke1);
-      }
-      header("Location: " . $_SERVER['REQUEST_URI']);
-      exit();
-    }
-    // Soin du combattant 2
-    if(isset($_POST['poke2heal'])){
-      if($combat->getStatus() == 1){ 
-        $combat->utiliserSoin($poke2);
       }
       header("Location: " . $_SERVER['REQUEST_URI']);
       exit();
@@ -58,7 +41,7 @@ class BattleController{
 
     // Attaque Spé du combattant 1
     if(isset($_POST['poke1atkspe'])){
-      if($combat->getStatus() == 0){ 
+      if($combat->getStatus() == 0 && !$combat->determinerVainqueur($modelPoke1, $modelPoke2)){ 
         $combat->utiliserAttaqueSpe($poke1, $poke2);
       }
       header("Location: " . $_SERVER['REQUEST_URI']);
@@ -66,7 +49,7 @@ class BattleController{
     }
     // Attaque Spé du combattant 2
     if(isset($_POST['poke2atkspe'])){
-      if($combat->getStatus() == 1){ 
+      if($combat->getStatus() == 1 && !$combat->determinerVainqueur($modelPoke1, $modelPoke2)){ 
         $combat->utiliserAttaqueSpe($poke2, $poke1);
       }
       header("Location: " . $_SERVER['REQUEST_URI']);
@@ -127,7 +110,7 @@ class BattleController{
     $poke2 = $pokemonModel->findOneById($_POST['poke2']);
     
     // Création de l'instance de combat
-    $combat = new Combat($poke1, $poke2, 0);
+    $combat = new Combat($poke1, $poke2, 1);
     $combat->demarrerCombat();
     
     // Redirection vers le combat
