@@ -15,7 +15,8 @@ abstract class Pokemon {
     private string $energy;
     private string $nomAtk;
     private string $nomAtkSpe;
-
+    private int $charge;
+  
     public function __construct($row) {
         $this->id = $row['id'];
         $this->nom = $row['nom'];
@@ -27,6 +28,7 @@ abstract class Pokemon {
         $this->faiblesse = "test";
         $this->nomAtk = $row['nomAtk'];
         $this->nomAtkSpe = $row['nomAtkSpe'];
+        $this->charge = 1;
     }
     
     #endregion
@@ -130,6 +132,15 @@ abstract class Pokemon {
         return $nomAtkSpe;
     }
 
+    public function getCharge(): int
+    {
+        return $this->charge;
+    }
+    public function setCharge(int $charge): int
+    {
+        $this->charge = $charge;
+        return $charge;
+    }
     
     #endregion
 
@@ -142,6 +153,12 @@ abstract class Pokemon {
         $attaque = $this->getPuissanceAttaque();
         $defense = $adversaire->getDefense();
         $degats = $attaque - $attaque * $defense;
+
+        // Gestion des charges
+        if ($this->getCharge() < 3) {
+            $this->setCharge($this->getCharge() + 1);
+        }
+
         $adversaire->recevoirDegats($degats);
     }
 
