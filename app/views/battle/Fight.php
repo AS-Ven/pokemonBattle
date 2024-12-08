@@ -11,11 +11,11 @@ echo '<div class="vic" >';
 if (!$combat->determinerVainqueur()){
     if(!$combat->getStatus())
     {
-        echo 'Au tour de : ' . $poke1->getNom();
+        echo 'Au tour de ' . $poke1->getNom();
     }
     else
     {
-        echo 'Au tour de : ' . $poke2->getNom();
+        echo 'Au tour de ' . $poke2->getNom();
     }
 } else {
     echo $combat->determinerVainqueur()->getNom() . ' a gagné !';

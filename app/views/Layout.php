@@ -13,10 +13,7 @@
 </head>
 <body>
     <header>
-    <img class="poke" src="/assets/image/pokemon_logo.png" alt="POKEMON">
-        <!-- <nav>
-            <a href="/pokemon/findAll">Liste des utilisateurs</a>
-        </nav> -->
+    <a href="/"><img class="poke" src="/assets/image/pokemon_logo.png" alt="POKEMON"></a>
     </header>
     
     <main>

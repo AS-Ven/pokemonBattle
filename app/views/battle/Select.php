@@ -55,7 +55,7 @@ foreach ($pokemons as $pokemon) {
 <div class="swiper-button-next"></div>
 
 <div class="bt_start">
-    <input class="start" type="submit" name="start" value="Démarrer les combats"/>
+    <input class="start" type="submit" name="start" value="Démarrer le combat"/>
 </div>
 
 <div class="swiper">

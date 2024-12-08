@@ -28,7 +28,7 @@ abstract class Pokemon {
         $this->faiblesse = "test";
         $this->nomAtk = $row['nomAtk'];
         $this->nomAtkSpe = $row['nomAtkSpe'];
-        $this->charge = 1;
+        $this->charge = 0;
     }
     
     #endregion
