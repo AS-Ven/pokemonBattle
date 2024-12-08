@@ -5,9 +5,17 @@ require_once './app/models/traits/soins.php';
 class PokemonEau extends Pokemon{
     use Soins;
 
+    #region Propriétés
+
     // Propriétés
     protected $faiblesse = "Plante";
     protected $energy = "/assets/image/eau.jpg";
+
+    #endregion
+
+
+
+    #region Get - Set
 
     // Fonction Get
     public function getFaiblesse(): string
@@ -19,22 +27,26 @@ class PokemonEau extends Pokemon{
         return $this->energy;
     }
 
+    #endregion
+
+
+
+    #region Méthodes
+
     // Fonction permettant d'utiliser la capacité spécial
     public function capaciteSpeciale(Pokemon $adversaire)
     {
-        $adversairePointsDeVie = $adversaire->getPointsDeVie();
         $pokemonAttaque = $this->getPuissanceAttaque();
 
+        // Vérification du type et gestion de dégats
         if ($adversaire->getType() == "Feu") {
-            $nouveauPointDeVie = $adversairePointsDeVie - $pokemonAttaque * 1.5;
+            $degats = - $pokemonAttaque * 1.5;
         } else {
-            $nouveauPointDeVie = $adversairePointsDeVie - $pokemonAttaque;
+            $degats = $pokemonAttaque;
         }
         
-        if ($nouveauPointDeVie < 0) {
-            $nouveauPointDeVie = 0;
-        }
-        
-        $adversaire->setPointsDeVie($nouveauPointDeVie);
+        $adversaire->recevoirDegats($degats);
     }
+
+    #endregion
 }

@@ -62,16 +62,20 @@ class Combat {
         $this->sauvegarderCombat();
     }
     
+    // Fonction de sauvegarde des informations de combat
     public function sauvegarderCombat()
     {
+        // Alternance entre les tours des pokémons
         if ($this->getStatus() == 1){
             $this->setStatus(0);
         } else {
             $this->setStatus(1);
         }
+        // Modification de la session
         $_SESSION['combat'] = serialize($this);
     }
 
+    // Fonction de lecture du combat
     public static function getCombat(): Combat | null
     {
         if (!isset($_SESSION['combat']))
@@ -81,19 +85,21 @@ class Combat {
         return unserialize($_SESSION['combat']);
     }
 
-    // Fonction gérant le déroullement du combat
+    // Fonction appelant la fonction d'attaque
     public function tourDeCombat(Pokemon $attaquant, Pokemon $defenseur)
     {
         $attaquant->attaquer($defenseur);
         $this->sauvegarderCombat();
     }
 
+    // Fonction appelant la fonction d'attaque spé
     public function utiliserAttaqueSpe(Pokemon $attaquant, Pokemon $defenseur)
     {
         $attaquant->capaciteSpeciale($defenseur);
         $this->sauvegarderCombat();
     }
 
+    // Fonction appelant la fonction de soin
     public function utiliserSoin($pokemon)
     {
         $pokemon->soigner();
