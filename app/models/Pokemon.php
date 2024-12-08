@@ -13,6 +13,8 @@ abstract class Pokemon {
     private string $img;
     private string $faiblesse;
     private string $energy;
+    private string $nomAtk;
+    private string $nomAtkSpe;
     private int $charge;
   
     public function __construct($row) {
@@ -24,6 +26,8 @@ abstract class Pokemon {
         $this->defense = $row['defense'];
         $this->img = $row['img'];
         $this->faiblesse = "test";
+        $this->nomAtk = $row['nomAtk'];
+        $this->nomAtkSpe = $row['nomAtkSpe'];
         $this->charge = 1;
     }
     
@@ -105,6 +109,27 @@ abstract class Pokemon {
     {
         $this->img = $img;
         return $img;
+    }
+
+
+    public function getNomAtk(): string
+    {
+        return $this->nomAtk;
+    }
+    public function setNomAtk(string $nomAtk): string
+    {
+        $this->nomAtk = $nomAtk;
+        return $nomAtk;
+    }
+
+    public function getNomAtkSpe(): string
+    {
+        return $this->nomAtkSpe;
+    }
+    public function setNomAtkSpe(string $nomAtkSpe): string
+    {
+        $this->nomAtkSpe = $nomAtkSpe;
+        return $nomAtkSpe;
     }
 
     public function getCharge(): int

@@ -43,6 +43,9 @@ header {
     margin: 0;
 }
 
+fieldset {
+    border: 0 none;
+}
 .poke {
     /*Forme*/
     height: 100px;
@@ -145,4 +148,39 @@ header {
     display: flex;
     justify-content: center;
     margin: 10px 80px 0px 0px;
+}
+
+.bt_start {
+    display: flex;
+    justify-content: center;
+}
+
+.start {
+    /*Forme*/
+    padding: 12px;
+    border-radius: 25px;
+
+    /*Apparence*/
+    font-size: 1.5em;
+    border: 5px solid #4b6fbb;
+    background-color: #fedd5b;
+    text-decoration: none;
+    color: #4b6fbb;
+    font-weight: 600;
+
+    /*Emplacement*/
+    display: flex;
+    justify-content: center;
+}
+
+.stp {
+    display: flex;
+    flex-direction: column;
+}
+
+.rad {
+    margin-top: 40px;
+}
+.rad2 {
+    margin-bottom: 40px;
 }
