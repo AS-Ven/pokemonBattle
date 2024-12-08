@@ -6,10 +6,12 @@ class Combat {
 
     private Pokemon $pokemon1;
     private Pokemon $pokemon2;
+    private bool $status;
 
-    public function __construct(Pokemon $pokemon1, Pokemon $pokemon2) {
+    public function __construct(Pokemon $pokemon1, Pokemon $pokemon2, bool $status) {
         $this->pokemon1 = $pokemon1;
         $this->pokemon2 = $pokemon2;
+        $this->status = $status;
     }
 
     #endregion
@@ -38,6 +40,16 @@ class Combat {
         return $pokemon2;
     }
 
+    public function getStatus(): bool
+    {
+        return $this->status;
+    }
+    public function setStatus(bool $status): bool
+    {
+        $this->status = $status;
+        return $status;
+    }
+
     #endregion
 
 
@@ -45,15 +57,47 @@ class Combat {
     #region Methodes
 
     // Fonction permettant de démarrer un combat
-    public function demarrerCombat($poke1, $poke2)
+    public function demarrerCombat()
     {
-      // A faire
+        $this->sauvegarderCombat();
+    }
+    
+    public function sauvegarderCombat()
+    {
+        if ($this->getStatus() == 1){
+            $this->setStatus(0);
+        } else {
+            $this->setStatus(1);
+        }
+        $_SESSION['combat'] = serialize($this);
+    }
+
+    public static function getCombat(): Combat | null
+    {
+        if (!isset($_SESSION['combat']))
+        {
+            return null;
+        }
+        return unserialize($_SESSION['combat']);
     }
 
     // Fonction gérant le déroullement du combat
     public function tourDeCombat(Pokemon $attaquant, Pokemon $defenseur)
     {
         $attaquant->attaquer($defenseur);
+        $this->sauvegarderCombat();
+    }
+
+    public function utiliserAttaqueSpe(Pokemon $attaquant, Pokemon $defenseur)
+    {
+        $attaquant->capaciteSpeciale($defenseur);
+        $this->sauvegarderCombat();
+    }
+
+    public function utiliserSoin($pokemon)
+    {
+        $pokemon->soigner();
+        $this->sauvegarderCombat();
     }
 
     // Fonction déterminant le vainqueur d'un combat

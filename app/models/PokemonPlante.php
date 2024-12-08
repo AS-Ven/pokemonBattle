@@ -20,22 +20,21 @@ class PokemonPlante extends Pokemon{
     }
 
     // Fonction permettant d'utiliser la capacité spécial
-    public function capaciteSpeciale(object $adversaire): float
+    public function capaciteSpeciale(Pokemon $adversaire)
     {
-        $adversairePointsDeVie = $adversaire->pointsDeVie;
-        $adversaireDefense = $adversaire->defense;
+        $adversairePointsDeVie = $adversaire->getPointsDeVie();
         $pokemonAttaque = $this->getPuissanceAttaque();
 
-        if ($adversaire->type == "Plante") {
-            $nouveauPointDeVie = ($adversairePointsDeVie - $pokemonAttaque * $adversaireDefense) * 1.5;
+        if ($adversaire->getType() == "Eau") {
+            $nouveauPointDeVie = $adversairePointsDeVie - $pokemonAttaque * 1.5;
         } else {
-            $nouveauPointDeVie = $adversairePointsDeVie - $pokemonAttaque * $adversaireDefense;
+            $nouveauPointDeVie = $adversairePointsDeVie - $pokemonAttaque;
         }
         
         if ($nouveauPointDeVie < 0) {
             $nouveauPointDeVie = 0;
         }
         
-        return $nouveauPointDeVie;
+        $adversaire->setPointsDeVie($nouveauPointDeVie);
     }
 }

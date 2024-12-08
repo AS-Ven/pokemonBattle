@@ -3,6 +3,8 @@
 trait Soins {
     public function soigner()
     {
-        $_SESSION[$this->getId() . 'newHP'] = $_SESSION[$this->getId() . 'newHP'] + 50;
+        $pv = $this->getPointsDeVie();
+        $heal = 50;
+        $this->setPointsDeVie($pv + $heal);
     }
 }
