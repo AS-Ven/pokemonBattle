@@ -1,6 +1,7 @@
 <?php
 
 trait Soins {
+    // Fonction de soin
     public function soigner()
     {
         $pv = $this->getPointsDeVie();
