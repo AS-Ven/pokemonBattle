@@ -1,10 +1,9 @@
+
+<form method="post" action="/battle/start">
+<div class="swiper">
+<fieldset class="pokemon-cards swiper-wrapper">
+            
 <?php
-
-echo '<form method="post" action="/battle/start">';
-
-echo '<div class="swiper">';
-
-echo '<fieldset class="pokemon-cards swiper-wrapper">';
 
 foreach ($pokemons as $pokemon) {
     echo "<div class='swiper-slide'>";
@@ -23,7 +22,7 @@ foreach ($pokemons as $pokemon) {
                 echo '<p class="HP" >HP : ' . $pokemon->getPointsDeVie() . '</p>';
             echo '</div>';
             echo '<div class="bar" >';
-                echo '<p class="DEF" >DEF : ' . $pokemon->getDefense() . '</p>';
+                echo '<p class="DEF" >DEF : ' . $pokemon->getDefense() * 100 . '</p>';
             echo '</div>';
 
             echo '<div class="G_atk">';
@@ -33,7 +32,7 @@ foreach ($pokemons as $pokemon) {
                 echo '</div>';
                 echo '<div class="l_atk">';
                     echo '<p class="nom_atk" >' . $pokemon->getNomAtkSpe() . '</p>';
-                    echo '<p class="g_atk" >' . $pokemon->getPuissanceAttaque() . '</p>';
+                    echo '<p class="g_atk" >' . $pokemon->getPuissanceAttaque() * ($pokemon->getCharge() * 0.5) . '</p>';
                 echo '</div>';
             echo '</div>';
 
@@ -48,19 +47,21 @@ foreach ($pokemons as $pokemon) {
     echo '</div>';
 }
 
-echo '</fieldset>';
+?>
 
-echo '</div>';
+</fieldset>
+</div>
+<div class="swiper-button-prev"></div>
+<div class="swiper-button-next"></div>
 
-echo '<div class="swiper-button-prev"></div><div class="swiper-button-next"></div>';
+<div class="bt_start">
+    <input class="start" type="submit" name="start" value="Démarrer les combats"/>
+</div>
 
-echo '<div class="bt_start">';
-echo '<input class="start" type="submit" name="start" value="Démarrer les combats"/>';
-echo '</div>';
+<div class="swiper">
+<fieldset class="pokemon-cards swiper-wrapper">
 
-echo '<div class="swiper">';
-
-echo '<fieldset class="pokemon-cards swiper-wrapper">';
+<?php
 
 foreach ($pokemons as $pokemon) {
     echo "<div class='swiper-slide'>";
@@ -90,7 +91,7 @@ foreach ($pokemons as $pokemon) {
                 echo '</div>';
                 echo '<div class="l_atk">';
                     echo '<p class="nom_atk" >' . $pokemon->getNomAtkSpe() . '</p>';
-                    echo '<p class="g_atk" >' . $pokemon->getPuissanceAttaque() * $pokemon->getCharge() . '</p>';
+                    echo '<p class="g_atk" >' . $pokemon->getPuissanceAttaque() * ($pokemon->getCharge() * 0.5) . '</p>';
                 echo '</div>';
             echo '</div>';
 
@@ -104,13 +105,13 @@ foreach ($pokemons as $pokemon) {
     echo '</div>';
 }
 
-echo '</fieldset>';
+?>
 
-echo '</div>';
-
-echo '<div class="swiper-button-prev"></div><div class="swiper-button-next"></div>';
-
-echo '</form>';
+</fieldset>
+</div>
+<div class="swiper-button-prev"></div>
+<div class="swiper-button-next"></div>
+</form>
     
 ?>
 
